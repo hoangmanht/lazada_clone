@@ -57,21 +57,49 @@ class TopBar extends StatelessWidget {
                         padding: const EdgeInsets.all(2),
                         child: Row(
                           children: [
+                            // text pop mart
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                  'popmart official',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: MyColors.icon,
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                            // camera icon
+                            SvgPicture.asset(
+                              'lib/assets/icons/front-camera.svg',
+                              height: 23,
+                              colorFilter: ColorFilter.mode(
+                                  MyColors.icon, BlendMode.srcIn),
+                            ),
+
+                            // padding
+                            const SizedBox(
+                              width: 10,
+                            ),
+
                             // search button
                             Container(
                               alignment: Alignment.center,
                               height: double.infinity,
                               width: 55,
                               decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    end: Alignment.centerRight,
-                                    colors: [
-                                      const Color.fromARGB(255, 254, 146, 16),
-                                      MyColors.hotPink,
-                                    ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(13)),
+                                gradient: LinearGradient(
+                                  begin: Alignment.centerLeft,
+                                  end: Alignment.centerRight,
+                                  colors: [
+                                    const Color.fromARGB(255, 254, 146, 16),
+                                    MyColors.hotPink,
+                                  ],
+                                ),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                               child: const Text(
                                 'Search',
                                 style: TextStyle(color: Colors.white),

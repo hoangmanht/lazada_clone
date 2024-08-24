@@ -63,6 +63,7 @@ flutter:
   assets:
     - lib/assets/icons/qr_code.svg
     - lib/assets/icons/wallet.svg
+    - lib/assets/icons/front-camera.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

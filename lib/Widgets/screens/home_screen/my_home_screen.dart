@@ -8,8 +8,9 @@ class MyHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: TopBar(),
+    return Scaffold(
+      backgroundColor: MyColors.background,
+      body: const TopBar(),
     );
   }
 }
