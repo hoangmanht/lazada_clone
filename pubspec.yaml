@@ -64,7 +64,11 @@ flutter:
     - lib/assets/icons/qr_code.svg
     - lib/assets/icons/wallet.svg
     - lib/assets/icons/front-camera.svg
-
+    - lib/assets/icons/laz_logo.png
+    - lib/assets/icons/account.svg
+    - lib/assets/icons/cart.svg
+    - lib/assets/icons/inbox.svg
+    - lib/assets/icons/like.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
