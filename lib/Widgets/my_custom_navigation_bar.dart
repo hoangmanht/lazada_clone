@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lazada_clone/Widgets/models/navigation_item.dart';
+import 'package:lazada_clone/providers/navigation_notifier.dart';
 import 'package:lazada_clone/utility/colors.dart';
 
-class MyCustomNavigationBar extends StatefulWidget {
+class MyCustomNavigationBar extends ConsumerStatefulWidget {
   final List<MyNavigationItem> items;
 
   const MyCustomNavigationBar({super.key, required this.items});
 
   @override
-  State<MyCustomNavigationBar> createState() => _MyCustomNavigationBarState();
+  ConsumerState<MyCustomNavigationBar> createState() =>
+      _MyCustomNavigationBarState();
 }
 
-class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
+class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
   // current index
   int currentIndex = 0;
   bool firstTab = false;
   bool homeTab = true;
 
   // onNavigation Tab
-  void onNavigationTab(int itemindex) {
+  void onNavigationTab({required WidgetRef ref, required int intemIndex}) {
     setState(() {
-      currentIndex = itemindex;
+      ref
+          .read(navigationNotifierProvider.notifier)
+          .updateCurrentIndex(intemIndex);
       firstTab = true;
       homeTab = false;
     });
@@ -30,6 +35,7 @@ class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
   // on Home tab
   void onHomeTab() {
     setState(() {
+      ref.read(navigationNotifierProvider.notifier).updateCurrentIndex(0);
       firstTab = true;
       homeTab = true;
     });
@@ -37,6 +43,8 @@ class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
+    final navigationIndex = ref.watch(navigationNotifierProvider);
+
     return Container(
       height: 70,
       color: MyColors.white,
@@ -87,7 +95,7 @@ class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
                 int itemindex = item.itemIndex;
                 return GestureDetector(
                   onTap: () {
-                    onNavigationTab(itemindex);
+                    onNavigationTab(intemIndex: itemindex, ref: ref);
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -98,7 +106,7 @@ class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
                           child: SvgPicture.asset(
                             item.iconPath,
                             height: 30,
-                            color: currentIndex == item.itemIndex &&
+                            color: navigationIndex == item.itemIndex &&
                                     firstTab &&
                                     homeTab == false
                                 ? MyColors.hotPink
@@ -109,12 +117,12 @@ class _MyCustomNavigationBarState extends State<MyCustomNavigationBar> {
                       Text(
                         item.label,
                         style: TextStyle(
-                          color: currentIndex == item.itemIndex &&
+                          color: navigationIndex == item.itemIndex &&
                                   firstTab &&
                                   homeTab == false
                               ? MyColors.hotPink
                               : MyColors.icon,
-                          fontWeight: currentIndex == item.itemIndex &&
+                          fontWeight: navigationIndex == item.itemIndex &&
                                   firstTab &&
                                   homeTab == false
                               ? FontWeight.bold

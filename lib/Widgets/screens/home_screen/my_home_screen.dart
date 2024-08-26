@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lazada_clone/Widgets/models/navigation_item.dart';
-import 'package:lazada_clone/Widgets/my_custom_navigation_bar.dart';
 import 'package:lazada_clone/Widgets/screens/home_screen/top_bar.dart';
 import 'package:lazada_clone/utility/colors.dart';
 
