@@ -39,6 +39,7 @@ dependencies:
   flutter_riverpod: ^2.5.1
   carousel_slider: ^5.0.0
   carousel_indicator: ^1.0.6
+  vs_scrollbar: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,29 @@ flutter:
     - lib/assets/icons/inbox.svg
     - lib/assets/icons/like.svg
     - lib/assets/icons/home.svg
+
+      # banners
+    - lib/assets/banners/1.png
+    - lib/assets/banners/2.png
+    - lib/assets/banners/3.png
+    - lib/assets/banners/4.png
+    - lib/assets/banners/5.png
+    - lib/assets/banners/6.png
+    - lib/assets/banners/7.png
+    - lib/assets/banners/8.png
+
+    # icon
+    - lib/assets/images/by more discount more.png
+    - lib/assets/images/LazFlash.png
+    - lib/assets/images/LazMall daily.png
+    - lib/assets/images/lazmall.png
+    - lib/assets/images/lucky egg.png
+    - lib/assets/images/more.png
+    - lib/assets/images/Payment Discount.png
+    - lib/assets/images/Pick Fruit from tree.png
+    - lib/assets/images/Top Up Phone.png
+    - lib/assets/images/voucher LIVE.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
