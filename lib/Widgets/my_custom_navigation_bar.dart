@@ -68,7 +68,7 @@ class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
                         child: homeTab
                             ? Image.asset(
                                 'lib/assets/icons/laz_logo.png',
-                                height: 25,
+                                height: 27,
                               )
                             : SvgPicture.asset(
                                 'lib/assets/icons/home.svg',

@@ -97,6 +97,17 @@ flutter:
     - lib/assets/images/Top Up Phone.png
     - lib/assets/images/voucher LIVE.png
     - lib/assets/images/hunt xu.png
+    - lib/assets/images/ads.png
+
+    # item display
+    - lib/assets/images/item_displays/new_voucher.png
+    - lib/assets/images/item_displays/choice.png
+    - lib/assets/images/item_displays/item_1.png
+    - lib/assets/images/item_displays/item_2.png
+    - lib/assets/images/item_displays/item_3.png
+    - lib/assets/images/item_displays/item_4.png
+    - lib/assets/images/item_displays/item_5.png
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
