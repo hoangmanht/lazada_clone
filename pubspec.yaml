@@ -96,6 +96,7 @@ flutter:
     - lib/assets/images/Pick Fruit from tree.png
     - lib/assets/images/Top Up Phone.png
     - lib/assets/images/voucher LIVE.png
+    - lib/assets/images/hunt xu.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -4,6 +4,12 @@ import 'package:lazada_clone/utility/options_item.dart';
 class OptionItemList {
   static List<OptionsItem> optionItemList = [
     OptionsItem(
+        title: '',
+        image: Image.asset(
+          'lib/assets/images/hunt xu.png',
+          fit: BoxFit.scaleDown,
+        )),
+    OptionsItem(
         title: 'LazzMall',
         image: Image.asset(
           'lib/assets/images/lazmall.png',

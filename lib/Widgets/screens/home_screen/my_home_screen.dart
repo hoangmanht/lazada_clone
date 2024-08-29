@@ -1,6 +1,7 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:lazada_clone/Widgets/screens/home_screen/top_bar.dart';
 import 'package:lazada_clone/utility/banner_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
@@ -21,6 +22,32 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
   // carousel index
   int carouselIndex = 0;
 
+  // scroll controller
+  final ScrollController _scrollController = ScrollController();
+  double _scrollPosition = -1;
+  double normalizedScrollPosition = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {
+        // caculate scroll position
+        if (_scrollController.hasClients) {
+          normalizedScrollPosition = _scrollController.offset /
+              ((_scrollController.position.maxScrollExtent / 3.5) +
+                  _scrollController.position.viewportDimension);
+          _scrollPosition = (2 * normalizedScrollPosition - 1);
+          print(normalizedScrollPosition);
+        } else {
+          setState(() {
+            _scrollPosition = -1;
+          });
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +60,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
           // promotion section
           Container(
             margin: const EdgeInsets.symmetric(vertical: 15),
-            height: 300,
+            height: 270,
             color: MyColors.white,
             child: Column(
               children: [
@@ -84,36 +111,45 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 // items
                 Expanded(
                   child: ListView.builder(
+                    controller: _scrollController,
                     scrollDirection: Axis.horizontal,
                     itemCount: OptionItemList.optionItemList.length,
                     itemBuilder: (context, index) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 60,
-                            width: 60,
-                            child: OptionItemList.optionItemList[index].image,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          SizedBox(
-                            height: 50,
-                            width: 90,
-                            child: Text(
-                              OptionItemList.optionItemList[index].title,
-                              textAlign: TextAlign.center,
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  height: 1.2,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                        ],
-                      );
+                      return index == 0
+                          ? Container(
+                              width: 130,
+                              alignment: Alignment.topCenter,
+                              padding: const EdgeInsets.only(left: 10),
+                              child: OptionItemList.optionItemList[index].image,
+                            )
+                          : Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 55,
+                                  width: 55,
+                                  child: OptionItemList
+                                      .optionItemList[index].image,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  width: 75,
+                                  child: Text(
+                                    OptionItemList.optionItemList[index].title,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        height: 1.2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            );
                     },
                   ),
                 ),
@@ -123,9 +159,19 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                   padding:
                       const EdgeInsets.only(left: 178, right: 178, bottom: 8),
                   child: Container(
-                    height: 5,
+                    height: 4,
                     decoration: BoxDecoration(
-                      color: Colors.grey.shade300,
+                        color: Colors.grey.shade300,
+                        borderRadius: BorderRadius.circular(2.5)),
+                    child: Align(
+                      alignment: Alignment(_scrollPosition, 0.0),
+                      child: Container(
+                        width: 18,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2.5),
+                          color: MyColors.hotPink,
+                        ),
+                      ),
                     ),
                   ),
                 ),
