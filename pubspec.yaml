@@ -107,6 +107,35 @@ flutter:
     - lib/assets/images/item_displays/item_3.png
     - lib/assets/images/item_displays/item_4.png
     - lib/assets/images/item_displays/item_5.png
+    - lib/assets/images/item_displays/tab.png
+
+    # icons tab bar
+    - lib/assets/icons_tab_bar/don't miss.png
+    - lib/assets/icons_tab_bar/for you.png
+    - lib/assets/icons_tab_bar/new items.png
+    - lib/assets/icons_tab_bar/xu.png
+
+    # product items
+    - lib/assets/product_items/iphone.png
+   
+
+    # comment
+    - lib/assets/comments/1.png
+    - lib/assets/comments/2.png
+    - lib/assets/comments/3.png
+
+
+    # avatars
+    - lib/assets/avatars/1.png
+    - lib/assets/avatars/2.png
+    - lib/assets/avatars/3.png
+    - lib/assets/avatars/4.png
+    - lib/assets/avatars/5.png
+    - lib/assets/avatars/6.png
+    - lib/assets/avatars/7.png
+    - lib/assets/avatars/8.png
+    - lib/assets/avatars/9.png
+
 
 
 
