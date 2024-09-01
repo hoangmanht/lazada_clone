@@ -9,9 +9,10 @@ class ItemProduct {
   final double discountPrice;
   final String percentageDiscount;
   final String title;
-  final double ratingTotal;
+  final String benefit;
+  final int ratingTotal;
   final double ratingScore;
-  final double sold;
+  final int sold;
   final List<Feature> features;
   final String location;
   final String promoteContent;
@@ -19,19 +20,21 @@ class ItemProduct {
   final List<Comment> comments;
   final ItemCategory itemCategory;
 
-  ItemProduct(
-      {required this.imageUrl,
-      this.price,
-      required this.discountPrice,
-      required this.percentageDiscount,
-      required this.title,
-      required this.ratingTotal,
-      required this.ratingScore,
-      required this.sold,
-      required this.features,
-      required this.tags,
-      required this.itemCategory,
-      required this.location,
-      required this.promoteContent,
-      required this.comments});
+  ItemProduct({
+    required this.imageUrl,
+    this.price,
+    required this.discountPrice,
+    required this.percentageDiscount,
+    required this.title,
+    required this.ratingTotal,
+    required this.ratingScore,
+    required this.sold,
+    required this.features,
+    required this.tags,
+    required this.itemCategory,
+    required this.location,
+    required this.promoteContent,
+    required this.comments,
+    required this.benefit,
+  });
 }

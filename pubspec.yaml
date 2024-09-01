@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^5.0.0
   carousel_indicator: ^1.0.6
   vs_scrollbar: ^1.0.0
+  sticky_headers: ^0.3.0+2
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +75,8 @@ flutter:
     - lib/assets/icons/inbox.svg
     - lib/assets/icons/like.svg
     - lib/assets/icons/home.svg
+    - lib/assets/icons/freeship_btn.png
+    - lib/assets/icons/envelope.png
 
       # banners
     - lib/assets/banners/1.png
@@ -117,12 +120,23 @@ flutter:
 
     # product items
     - lib/assets/product_items/iphone.png
+    - lib/assets/product_items/robot.png
+    - lib/assets/product_items/bag.png
+    - lib/assets/product_items/kettle.png
    
 
     # comment
     - lib/assets/comments/1.png
     - lib/assets/comments/2.png
     - lib/assets/comments/3.png
+    - lib/assets/comments/4.png
+    - lib/assets/comments/5.png
+    - lib/assets/comments/6.png
+    - lib/assets/comments/7.png
+    - lib/assets/comments/8.png
+    - lib/assets/comments/9.png
+    - lib/assets/comments/11.png
+    - lib/assets/comments/12.png
 
 
     # avatars
