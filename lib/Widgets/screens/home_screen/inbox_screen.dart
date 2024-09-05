@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lazada_clone/providers/navigation_notifier.dart';
 import 'package:lazada_clone/utility/colors.dart';
 
-class InboxScreen extends StatefulWidget {
+class InboxScreen extends ConsumerStatefulWidget {
   const InboxScreen({super.key});
 
   @override
-  State<InboxScreen> createState() => _InboxScreenState();
+  ConsumerState<InboxScreen> createState() => _InboxScreenState();
 }
 
-class _InboxScreenState extends State<InboxScreen> {
+class _InboxScreenState extends ConsumerState<InboxScreen> {
   void _showLoginBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: MyColors.white,
+      isDismissible: false,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -250,6 +253,8 @@ class _InboxScreenState extends State<InboxScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final navigationProvider = ref.read(navigationNotifierProvider.notifier);
+
     return Scaffold(
       backgroundColor: MyColors.white,
       body: SafeArea(
@@ -338,11 +343,63 @@ class _InboxScreenState extends State<InboxScreen> {
               flex: 1,
               child: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      height: 200,
-                      child: Image.asset('lib/assets/icons/character.png'),
+                    Container(
+                      padding: EdgeInsets.only(right: 25),
+                      height: 190,
+                      child: Image.asset(
+                        'lib/assets/icons/character.png',
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text(
+                      'No Message Yet',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    const Text('Please try again'),
+
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    // continue button
+                    GestureDetector(
+                      onTap: () {
+                        navigationProvider.updateCurrentIndex(0);
+                      },
+                      child: Container(
+                        width: 180,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [
+                              Color.fromARGB(255, 253, 112, 88),
+                              Color.fromARGB(255, 248, 58, 127),
+                            ],
+                          ),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Continue Shopping',
+                            style: TextStyle(
+                              color: MyColors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),

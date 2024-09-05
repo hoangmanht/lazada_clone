@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339367086465",
+    "project_id": "lazada-clone-f3640",
+    "storage_bucket": "lazada-clone-f3640.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339367086465:android:8b88e1c8d916e5cc05c080",
+        "android_client_info": {
+          "package_name": "com.example.lazada_clone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339367086465-80ekvhqun3u291lerbsp5jl5vqsapb0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDflFSriaDKLedSJHxc1ccRteKDXMweOMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339367086465-80ekvhqun3u291lerbsp5jl5vqsapb0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
