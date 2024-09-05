@@ -1,7 +1,6 @@
 import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:lazada_clone/Widgets/screens/home_screen/top_bar.dart';
 import 'package:lazada_clone/Widgets/screens/item_product_screen.dart';
 import 'package:lazada_clone/Widgets/tab_item.dart';
@@ -12,7 +11,7 @@ import 'package:lazada_clone/utility/option_item_list.dart';
 import 'package:lazada_clone/utility/screen_list.dart';
 
 class MyHomeScreen extends StatefulWidget {
-  MyHomeScreen({super.key});
+  const MyHomeScreen({super.key});
 
   @override
   State<MyHomeScreen> createState() => _MyHomeScreenState();
@@ -45,8 +44,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
         // caculate scroll position
         if (_scrollController.hasClients) {
           normalizedScrollPosition = _scrollController.offset /
-              ((_scrollController.position.maxScrollExtent / 3.5) +
-                  _scrollController.position.viewportDimension);
+              _scrollController.position.maxScrollExtent;
           _scrollPosition = (2 * normalizedScrollPosition - 1);
         } else {
           setState(() {
@@ -268,16 +266,15 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                         ),
                                       ),
                                       Text(
-                                        item.disCountPrice.toStringAsFixed(3) +
-                                            ' đ',
+                                        '${item.disCountPrice.toStringAsFixed(3)} đ',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: MyColors.hotPink,
                                             fontSize: 18),
                                       ),
                                       Text(
-                                        item.price.toStringAsFixed(3) + ' đ',
-                                        style: TextStyle(
+                                        '${item.price.toStringAsFixed(3)} đ',
+                                        style: const TextStyle(
                                             decoration:
                                                 TextDecoration.lineThrough,
                                             color: Colors.grey),
@@ -299,7 +296,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ),
 
                       //padding
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
 
@@ -330,7 +327,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 SizedBox(
@@ -374,16 +371,15 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                         ),
                                       ),
                                       Text(
-                                        item.disCountPrice.toStringAsFixed(3) +
-                                            ' đ',
+                                        '${item.disCountPrice.toStringAsFixed(3)} đ',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: MyColors.hotPink,
                                             fontSize: 18),
                                       ),
                                       Text(
-                                        item.price.toStringAsFixed(3) + ' đ',
-                                        style: TextStyle(
+                                        '${item.price.toStringAsFixed(3)} đ',
+                                        style: const TextStyle(
                                             decoration:
                                                 TextDecoration.lineThrough,
                                             color: Colors.grey),
@@ -447,7 +443,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
             },
             body: TabBarView(
               controller: _tabController,
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Container(
                   padding: const EdgeInsets.only(top: 13),
@@ -462,7 +458,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ],
                     ),
                   ),
-                  child: ItemProductScreen(),
+                  child: const ItemProductScreen(),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 13),
@@ -477,7 +473,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ],
                     ),
                   ),
-                  child: ItemProductScreen(),
+                  child: const ItemProductScreen(),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 13),
@@ -492,7 +488,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ],
                     ),
                   ),
-                  child: ItemProductScreen(),
+                  child: const ItemProductScreen(),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 13),
@@ -507,7 +503,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ],
                     ),
                   ),
-                  child: ItemProductScreen(),
+                  child: const ItemProductScreen(),
                 ),
               ],
             ),
@@ -518,7 +514,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Icon(
+                const Icon(
                   Icons.close_rounded,
                   color: Colors.grey,
                   size: 25,

@@ -47,7 +47,12 @@ class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
 
     return Container(
       height: 70,
-      color: MyColors.white,
+      decoration: BoxDecoration(
+        color: MyColors.white,
+        border: Border(
+          top: BorderSide(color: Colors.grey.shade100, width: 2),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Row(

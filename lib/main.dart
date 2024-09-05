@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lazada_clone/Widgets/models/navigation_item.dart';
 import 'package:lazada_clone/Widgets/my_custom_navigation_bar.dart';
 import 'package:lazada_clone/providers/navigation_notifier.dart';
-import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/screen_list.dart';
 
 // tab bar theme

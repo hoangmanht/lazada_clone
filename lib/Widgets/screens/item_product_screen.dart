@@ -54,14 +54,15 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                         ItemProductList.itemproductList[index].title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            '${ItemProductList.itemproductList[index].discountPrice.toStringAsFixed(3)}' +
+                            ItemProductList.itemproductList[index].discountPrice
+                                    .toStringAsFixed(3) +
                                 ' đ',
                             style: TextStyle(
                               color: MyColors.hotPink,
@@ -69,16 +70,13 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                               fontSize: 20,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Container(
                             color: MyColors.hotPink.withOpacity(0.1),
                             child: Text(
-                              '-' +
-                                  ItemProductList
-                                      .itemproductList[index].percentageDiscount
-                                      .toString(),
+                              '-${ItemProductList.itemproductList[index].percentageDiscount}',
                               style: TextStyle(
                                 color: MyColors.hotPink,
                                 fontWeight: FontWeight.w500,
@@ -108,8 +106,8 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                             color: Colors.amber[600],
                           ),
                           Text(
-                            '${ItemProductList.itemproductList[index].ratingScore}' +
-                                '(${ItemProductList.itemproductList[index].ratingTotal})',
+                            '${ItemProductList.itemproductList[index].ratingScore}'
+                            '(${ItemProductList.itemproductList[index].ratingTotal})',
                             style: TextStyle(
                                 color: Colors.grey.shade600,
                                 fontWeight: FontWeight.w500),
@@ -118,8 +116,8 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                             width: 5,
                           ),
                           Text(
-                            '${ItemProductList.itemproductList[index].sold}' +
-                                ' Sold',
+                            '${ItemProductList.itemproductList[index].sold}'
+                            ' Sold',
                             style: TextStyle(
                                 color: Colors.grey.shade600,
                                 fontWeight: FontWeight.w500),

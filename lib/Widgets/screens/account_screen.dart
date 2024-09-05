@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lazada_clone/utility/account_item_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
+import 'package:lazada_clone/utility/option_item_list.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -9,6 +11,69 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
+  // scroll controller
+  final ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController2 = ScrollController();
+  final ScrollController _scrollController3 = ScrollController();
+  double _scrollPosition = -1;
+  double _scrollPosition2 = -1;
+  double _scrollPosition3 = -1;
+  double normalizedScrollPosition = 0;
+  double normalizedScrollPosition2 = 0;
+  double normalizedScrollPosition3 = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(() {
+      setState(() {
+        // caculate scroll position
+        if (_scrollController.hasClients) {
+          normalizedScrollPosition = _scrollController.offset /
+              _scrollController.position.maxScrollExtent;
+
+          _scrollPosition = (2 * normalizedScrollPosition - 1);
+          print(_scrollPosition);
+        } else {
+          setState(() {
+            _scrollPosition = -1;
+          });
+        }
+      });
+    });
+    _scrollController2.addListener(() {
+      setState(() {
+        // caculate scroll position
+        if (_scrollController2.hasClients) {
+          normalizedScrollPosition2 = _scrollController2.offset /
+              (MediaQuery.sizeOf(context).width / 2);
+
+          _scrollPosition2 = (2 * normalizedScrollPosition2 - 1);
+        } else {
+          setState(() {
+            _scrollPosition2 = -1;
+          });
+        }
+      });
+    });
+
+    _scrollController3.addListener(() {
+      setState(() {
+        // caculate scroll position
+        if (_scrollController3.hasClients) {
+          normalizedScrollPosition3 = _scrollController3.offset /
+              (MediaQuery.sizeOf(context).width * 0.6);
+
+          _scrollPosition3 = (2 * normalizedScrollPosition3 - 1);
+        } else {
+          setState(() {
+            _scrollPosition3 = -1;
+          });
+        }
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -156,7 +221,7 @@ class _AccountScreenState extends State<AccountScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Column(
                       children: [
@@ -175,7 +240,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Column(
                       children: [
@@ -194,7 +259,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Column(
                       children: [
@@ -214,7 +279,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Column(
                       children: [
@@ -234,7 +299,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       ],
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: 60,
                     child: Column(
                       children: [
@@ -403,7 +468,290 @@ class _AccountScreenState extends State<AccountScreen> {
                     ),
                   ],
                 ),
-              )
+              ),
+
+              // item list
+              SizedBox(
+                height: 100,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        controller: _scrollController,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: AccountItemList.accountItemList1.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  width: 40,
+                                  child: AccountItemList
+                                      .accountItemList1[index].image,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  width: 75,
+                                  child: Text(
+                                    AccountItemList
+                                        .accountItemList1[index].title,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        height: 1.2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    // custom indicator
+                    Padding(
+                      padding: const EdgeInsets.only(left: 178, right: 178),
+                      child: Container(
+                        height: 4,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(2.5)),
+                        child: Align(
+                          alignment: Alignment(_scrollPosition, 0.0),
+                          child: Container(
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.5),
+                              color: MyColors.hotPink,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(
+                height: 5,
+              ),
+
+              Divider(
+                color: Colors.grey.shade100,
+                thickness: 10,
+              ),
+
+              // item list 2
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                ),
+                height: 220,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: GridView.builder(
+                        controller: _scrollController2,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: AccountItemList.accountItemList2.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  width: 40,
+                                  child: AccountItemList
+                                      .accountItemList2[index].image,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  width: 75,
+                                  child: Text(
+                                    AccountItemList
+                                        .accountItemList2[index].title,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        height: 1.2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    // custom indicator
+                    Padding(
+                      padding: const EdgeInsets.only(left: 178, right: 178),
+                      child: Container(
+                        height: 4,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(2.5)),
+                        child: Align(
+                          alignment: Alignment(_scrollPosition2, 0.0),
+                          child: Container(
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.5),
+                              color: MyColors.hotPink,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Divider(
+                      color: Colors.grey.shade100,
+                      thickness: 10,
+                    ),
+                  ],
+                ),
+              ),
+
+              // title 3
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Recent view',
+                      style: TextStyle(
+                        color: MyColors.headline,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          'Login to see',
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.grey.shade600,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: Colors.grey.shade600,
+                          size: 12,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              Divider(
+                color: Colors.grey.shade100,
+                thickness: 10,
+              ),
+
+              // item list 3
+              Container(
+                padding: const EdgeInsets.only(
+                  top: 10,
+                  bottom: 10,
+                ),
+                height: 200,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: GridView.builder(
+                        controller: _scrollController3,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: AccountItemList.accountItemList3.length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  height: 30,
+                                  width: 30,
+                                  child: AccountItemList
+                                      .accountItemList3[index].image,
+                                ),
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                  width: 75,
+                                  child: Text(
+                                    AccountItemList
+                                        .accountItemList3[index].title,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                        height: 1.2,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+
+                    // custom indicator
+                    Padding(
+                      padding: const EdgeInsets.only(left: 178, right: 178),
+                      child: Container(
+                        height: 4,
+                        width: 20,
+                        decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(2.5)),
+                        child: Align(
+                          alignment: Alignment(_scrollPosition3, 0.0),
+                          child: Container(
+                            width: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(2.5),
+                              color: MyColors.hotPink,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
