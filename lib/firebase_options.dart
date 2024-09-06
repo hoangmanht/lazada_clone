@@ -59,4 +59,5 @@ class DefaultFirebaseOptions {
     projectId: 'lazada-clone-f3640',
     storageBucket: 'lazada-clone-f3640.appspot.com',
   );
+
 }

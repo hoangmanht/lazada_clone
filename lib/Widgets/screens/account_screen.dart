@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lazada_clone/utility/account_item_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
-import 'package:lazada_clone/utility/option_item_list.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -33,7 +32,6 @@ class _AccountScreenState extends State<AccountScreen> {
               _scrollController.position.maxScrollExtent;
 
           _scrollPosition = (2 * normalizedScrollPosition - 1);
-          print(_scrollPosition);
         } else {
           setState(() {
             _scrollPosition = -1;
