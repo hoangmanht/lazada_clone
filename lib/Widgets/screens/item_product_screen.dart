@@ -61,9 +61,7 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                       Row(
                         children: [
                           Text(
-                            ItemProductList.itemproductList[index].discountPrice
-                                    .toStringAsFixed(3) +
-                                ' đ',
+                            '${ItemProductList.itemproductList[index].discountPrice.toStringAsFixed(3)} đ',
                             style: TextStyle(
                               color: MyColors.hotPink,
                               fontWeight: FontWeight.bold,

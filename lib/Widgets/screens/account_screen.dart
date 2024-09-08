@@ -1,6 +1,11 @@
+import 'package:country_flags/country_flags.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lazada_clone/Widgets/signup_bottom_sheet.dart';
 import 'package:lazada_clone/utility/account_item_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
+import 'package:lazada_clone/utility/firebase_utility.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -20,6 +25,284 @@ class _AccountScreenState extends State<AccountScreen> {
   double normalizedScrollPosition = 0;
   double normalizedScrollPosition2 = 0;
   double normalizedScrollPosition3 = 0;
+
+  User? _user;
+
+  // show login
+  void _showLoginBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: MyColors.white,
+      isDismissible: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: SizedBox(
+            height: double.infinity,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Stack(
+                  children: [
+                    // promotion banner
+                    SizedBox(
+                      child: Image.asset('lib/assets/icons/voucher_60.png'),
+                    ),
+
+                    Positioned(
+                      top: 50,
+                      left: 5,
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.close,
+                          color: Colors.grey.shade600,
+                        ),
+                        onPressed: () {
+                          setState(
+                            () {
+                              Navigator.of(context).pop();
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+
+                // decoration text
+                const SizedBox(
+                  width: double.infinity,
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          'Free 30-day return',
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 221, 170, 120),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // GG button
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: WidgetStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                            shadowColor: WidgetStateProperty.all<Color>(
+                                Colors.transparent),
+                            backgroundColor: WidgetStateProperty.all<Color>(
+                              Colors.grey.shade100,
+                            ),
+                          ),
+                          onPressed: () async {
+                            await FirebaseUtility().signinWithGoogle();
+                            setState(() {
+                              _user = FirebaseAuth.instance.currentUser;
+                            });
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Login with Google',
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 10,
+                        bottom: 10,
+                        child: SizedBox(
+                          child: Image.asset(
+                            'lib/assets/icons/google.png',
+                            width: 20,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 15),
+
+                // Fb button
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            shape: WidgetStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                            shadowColor: WidgetStateProperty.all<Color>(
+                                Colors.transparent),
+                            backgroundColor: WidgetStateProperty.all<Color>(
+                              Colors.grey.shade100,
+                            ),
+                          ),
+                          onPressed: () {
+                            // Simulate login success
+                          },
+                          child: Center(
+                            child: Text(
+                              'Login with Facebook',
+                              style: TextStyle(
+                                color: Colors.grey.shade600,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 10,
+                        bottom: 15,
+                        child: SizedBox(
+                          child: Image.asset(
+                            'lib/assets/icons/facebook.png',
+                            width: 23,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(
+                          Colors.transparent,
+                        ),
+                        shadowColor: WidgetStateProperty.all(
+                          Colors.transparent,
+                        ),
+                      ),
+                      onPressed: () {},
+                      label: const Text(
+                        'With password',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 106, 255),
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.find_in_page,
+                        color: Color.fromARGB(255, 0, 106, 255),
+                        size: 22,
+                      ),
+                    ),
+                    ElevatedButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all(
+                          Colors.transparent,
+                        ),
+                        shadowColor: WidgetStateProperty.all(
+                          Colors.transparent,
+                        ),
+                      ),
+                      onPressed: () {},
+                      label: const Text(
+                        'Phone number',
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 106, 255),
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.phone,
+                        color: Color.fromARGB(255, 0, 106, 255),
+                        size: 20,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const Spacer(),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account?",
+                      style: TextStyle(
+                        color: Colors.grey.shade600,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        "Sign up now",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 0, 106, 255),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  // show signin
+  void _showSignupBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: MyColors.white,
+      isDismissible: false,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return const SignupBottomSheet();
+      },
+    );
+  }
 
   @override
   void initState() {
@@ -81,101 +364,229 @@ class _AccountScreenState extends State<AccountScreen> {
           child: Column(
             children: [
               // login section
-              Container(
-                height: 155,
-                width: double.infinity,
-                padding: EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('lib/assets/images/login_bg.png')),
-                ),
-                child: Stack(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Sign in, Chance to get a deal!',
-                              style: TextStyle(
-                                color: Colors.grey.shade600,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
+              FirebaseAuth.instance.currentUser == null
+                  ? Container(
+                      height: 155,
+                      width: double.infinity,
+                      padding: const EdgeInsets.only(top: 20),
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage('lib/assets/images/login_bg.png'),
+                        ),
+                      ),
+                      child: Stack(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Column(
+                                children: [
+                                  Text(
+                                    'Sign in, Chance to get a deal!',
+                                    style: TextStyle(
+                                      color: Colors.grey.shade600,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 13,
+                                  ),
+                                  Row(
+                                    children: [
+                                      // sign in btn
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showLoginBottomSheet(context);
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            gradient: const LinearGradient(
+                                              colors: [
+                                                Color.fromARGB(
+                                                    255, 253, 112, 88),
+                                                Color.fromARGB(
+                                                    255, 248, 58, 127),
+                                              ],
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'Sign In',
+                                              style: TextStyle(
+                                                color: MyColors.white,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+
+                                      // sign up btn
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showSignupBottomSheet(context);
+                                        },
+                                        child: Container(
+                                          width: 100,
+                                          height: 50,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.transparent,
+                                            border: Border.all(
+                                                color: MyColors.hotPink,
+                                                width: 1),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'Sign up',
+                                              style: TextStyle(
+                                                color: MyColors.hotPink,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [Container()],
+                                  ),
+                                ],
                               ),
+                            ],
+                          ),
+                          const Positioned(
+                            right: 13,
+                            child: Icon(
+                              Icons.hexagon_outlined,
+                              size: 25,
                             ),
-                            const SizedBox(
-                              height: 13,
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 100,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    gradient: const LinearGradient(
-                                      colors: [
-                                        Color.fromARGB(255, 253, 112, 88),
-                                        Color.fromARGB(255, 248, 58, 127),
-                                      ],
-                                    ),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Sign In',
-                                      style: TextStyle(
-                                        color: MyColors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.transparent,
-                                    border: Border.all(
-                                        color: MyColors.hotPink, width: 1),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Sign up',
-                                      style: TextStyle(
-                                        color: MyColors.hotPink,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [Container()],
-                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            const Color.fromARGB(255, 255, 238, 228),
+                            MyColors.white,
                           ],
                         ),
-                      ],
-                    ),
-                    const Positioned(
-                      right: 13,
-                      child: Icon(
-                        Icons.hexagon_outlined,
-                        size: 25,
+                      ),
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        top: 30,
+                        bottom: 30,
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Stack(
+                            children: [
+                              // avatar
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(FirebaseAuth
+                                        .instance.currentUser!.photoURL ??
+                                    ''),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Icon(
+                                  CupertinoIcons.camera_circle_fill,
+                                  color: MyColors.white,
+                                  size: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                FirebaseAuth
+                                        .instance.currentUser!.displayName ??
+                                    '',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 22),
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    const TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Favorite',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                    const TextSpan(
+                                      text: '  0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Following',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                    const TextSpan(
+                                      text: '  0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Promote code',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Icon(
+                            Icons.hexagon_outlined,
+                            size: 25,
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
-              ),
 
               // title
               Padding(
@@ -327,7 +738,7 @@ class _AccountScreenState extends State<AccountScreen> {
               // banner
               Container(
                 color: Colors.grey.shade100,
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 child: SizedBox(
                   child: Image.asset(
                       'lib/assets/icons/account_screen_icons/pro_banner.png'),

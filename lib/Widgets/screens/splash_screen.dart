@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen>
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 3));
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MyHomeScreen()));
+        MaterialPageRoute(builder: (context) => const MyHomeScreen()));
   }
 
   @override
@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 0, 102),
+      backgroundColor: const Color.fromARGB(255, 255, 0, 102),
       body: Center(
         child: SizedBox(
           height: 100,

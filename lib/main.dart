@@ -14,6 +14,9 @@ void main() async {
   // Initialize Firebase
   await Firebase.initializeApp();
 
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,

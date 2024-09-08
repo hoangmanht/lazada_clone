@@ -1,19 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lazada_clone/providers/navigation_notifier.dart';
 import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/firebase_utility.dart';
 
-class InboxScreen extends ConsumerStatefulWidget {
-  const InboxScreen({super.key});
+class CartScreen extends ConsumerStatefulWidget {
+  const CartScreen({super.key});
 
   @override
-  ConsumerState<InboxScreen> createState() => _InboxScreenState();
+  ConsumerState<CartScreen> createState() => _CartScreenState();
 }
 
-class _InboxScreenState extends ConsumerState<InboxScreen> {
+class _CartScreenState extends ConsumerState<CartScreen> {
   User? _user;
+
+  // show bottom sheet
   void _showLoginBottomSheet(BuildContext context, WidgetRef ref) {
     showModalBottomSheet(
       context: context,
@@ -278,172 +281,6 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final navigationProvider = ref.read(navigationNotifierProvider.notifier);
-
-    return Scaffold(
-      backgroundColor: MyColors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              height: 200,
-              color: Colors.grey.shade200,
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                children: [
-                  //App bar
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Message',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: MyColors.headline,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 22,
-                        child: Image.asset(
-                            'lib/assets/icons/account_screen_icons/brush.png'),
-                      ),
-                    ],
-                  ),
-
-                  const SizedBox(
-                    height: 13,
-                  ),
-
-                  // menu buttons
-                  _user != null
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 178,
-                              height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/orders.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 178,
-                              height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/chat.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ],
-                        )
-                      : const SizedBox(),
-
-                  // padding
-                  const SizedBox(
-                    height: 8,
-                  ),
-
-                  _user != null
-                      ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: 178,
-                              height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/noti.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 178,
-                              height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/promotion.png',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                          ],
-                        )
-                      : const SizedBox(),
-                ],
-              ),
-            ),
-
-            // body
-            _user != null
-                ? Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.only(right: 25),
-                            height: 190,
-                            child: Image.asset(
-                              'lib/assets/icons/character.png',
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Text(
-                            'No Message Yet',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          const Text('Please try again'),
-
-                          const SizedBox(
-                            height: 10,
-                          ),
-
-                          // continue button
-                          GestureDetector(
-                            onTap: () {
-                              navigationProvider.updateCurrentIndex(0);
-                            },
-                            child: Container(
-                              width: 180,
-                              height: 35,
-                              decoration: BoxDecoration(
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 253, 112, 88),
-                                    Color.fromARGB(255, 248, 58, 127),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Continue Shopping',
-                                  style: TextStyle(
-                                    color: MyColors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                : const SizedBox(),
-          ],
-        ),
-      ),
-    );
+    return const Placeholder();
   }
 }

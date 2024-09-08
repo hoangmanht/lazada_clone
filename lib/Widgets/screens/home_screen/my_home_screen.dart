@@ -8,7 +8,6 @@ import 'package:lazada_clone/utility/banner_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/display_items_list.dart';
 import 'package:lazada_clone/utility/option_item_list.dart';
-import 'package:lazada_clone/utility/screen_list.dart';
 
 class MyHomeScreen extends StatefulWidget {
   const MyHomeScreen({super.key});
@@ -124,7 +123,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                     height: 7,
                                     width: 7,
                                     index: carouselIndex,
-                                    count: ScreenList.myScreen.length,
+                                    count: BannerList.imageUrls.length,
                                   ),
                                 ),
                               ],
