@@ -48,7 +48,9 @@ class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
     return Container(
       height: 70,
       decoration: BoxDecoration(
-        color: MyColors.white,
+        color: navigationIndex == 1
+            ? const Color.fromARGB(255, 28, 28, 28)
+            : MyColors.white,
         border: Border(
           top: BorderSide(color: Colors.grey.shade100, width: 2),
         ),

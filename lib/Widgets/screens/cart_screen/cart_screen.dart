@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:lazada_clone/Widgets/screens/cart_screen/cart_screen_top_bar.dart';
+import 'package:lazada_clone/Widgets/screens/item_product_screen.dart';
 import 'package:lazada_clone/providers/navigation_notifier.dart';
 import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/firebase_utility.dart';
@@ -281,6 +283,86 @@ class _CartScreenState extends ConsumerState<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: MyColors.white,
+      appBar: AppBar(
+        toolbarHeight: 70,
+        flexibleSpace: const CartScreenTopBar(),
+      ),
+      body: NestedScrollView(
+        headerSliverBuilder: (context, value) {
+          return [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Container(
+                    height: 200,
+                    width: double.infinity,
+                    color: Colors.grey.shade200,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          height: 85,
+                          child: Image.asset(
+                              'lib/assets/icons/cart_character.png'),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        const Text('There is no item in your cart!'),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(
+                        'view my history',
+                        style: TextStyle(fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 10,
+                        color: Colors.grey.shade400,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const Text('Just for you'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          ];
+        },
+        body: Container(
+          padding: const EdgeInsets.only(top: 13),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              stops: const [0.7, 1.0],
+              colors: [
+                MyColors.white,
+                Colors.grey.withOpacity(0.1),
+              ],
+            ),
+          ),
+          child: const ItemProductScreen(),
+        ),
+      ),
+    );
   }
 }

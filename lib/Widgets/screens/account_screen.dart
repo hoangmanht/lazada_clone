@@ -2,6 +2,7 @@ import 'package:country_flags/country_flags.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lazada_clone/Widgets/screens/setting_screen.dart';
 import 'package:lazada_clone/Widgets/signup_bottom_sheet.dart';
 import 'package:lazada_clone/utility/account_item_list.dart';
 import 'package:lazada_clone/utility/colors.dart';
@@ -364,8 +365,127 @@ class _AccountScreenState extends State<AccountScreen> {
           child: Column(
             children: [
               // login section
-              FirebaseAuth.instance.currentUser == null
-                  ? Container(
+              StreamBuilder(
+                stream: FirebaseAuth.instance.authStateChanges(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            const Color.fromARGB(255, 255, 238, 228),
+                            MyColors.white,
+                          ],
+                        ),
+                      ),
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        top: 30,
+                        bottom: 30,
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Stack(
+                            children: [
+                              // avatar
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(FirebaseAuth
+                                        .instance.currentUser!.photoURL ??
+                                    ''),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: Icon(
+                                  CupertinoIcons.camera_circle_fill,
+                                  color: MyColors.white,
+                                  size: 24,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            width: 15,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                FirebaseAuth
+                                        .instance.currentUser!.displayName ??
+                                    '',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 22),
+                              ),
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    const TextSpan(
+                                      text: '0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Favorite',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                    const TextSpan(
+                                      text: '  0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Following',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                    const TextSpan(
+                                      text: '  0',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    TextSpan(
+                                      text: ' Promote code',
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => SettingScreen(),
+                                ),
+                              );
+                            },
+                            child: const Icon(
+                              Icons.hexagon_outlined,
+                              size: 25,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Container(
                       height: 155,
                       width: double.infinity,
                       padding: const EdgeInsets.only(top: 20),
@@ -471,123 +591,12 @@ class _AccountScreenState extends State<AccountScreen> {
                               ),
                             ],
                           ),
-                          const Positioned(
-                            right: 13,
-                            child: Icon(
-                              Icons.hexagon_outlined,
-                              size: 25,
-                            ),
-                          ),
                         ],
                       ),
-                    )
-                  : Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            const Color.fromARGB(255, 255, 238, 228),
-                            MyColors.white,
-                          ],
-                        ),
-                      ),
-                      padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        top: 30,
-                        bottom: 30,
-                      ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Stack(
-                            children: [
-                              // avatar
-                              CircleAvatar(
-                                radius: 30,
-                                backgroundImage: NetworkImage(FirebaseAuth
-                                        .instance.currentUser!.photoURL ??
-                                    ''),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                right: 0,
-                                child: Icon(
-                                  CupertinoIcons.camera_circle_fill,
-                                  color: MyColors.white,
-                                  size: 24,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                FirebaseAuth
-                                        .instance.currentUser!.displayName ??
-                                    '',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 22),
-                              ),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    const TextSpan(
-                                      text: '0',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    TextSpan(
-                                      text: ' Favorite',
-                                      style: TextStyle(
-                                        color: Colors.grey.shade600,
-                                      ),
-                                    ),
-                                    const TextSpan(
-                                      text: '  0',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    TextSpan(
-                                      text: ' Following',
-                                      style: TextStyle(
-                                        color: Colors.grey.shade600,
-                                      ),
-                                    ),
-                                    const TextSpan(
-                                      text: '  0',
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    TextSpan(
-                                      text: ' Promote code',
-                                      style: TextStyle(
-                                        color: Colors.grey.shade600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                          const Icon(
-                            Icons.hexagon_outlined,
-                            size: 25,
-                          ),
-                        ],
-                      ),
-                    ),
-
+                    );
+                  }
+                },
+              ),
               // title
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13),
