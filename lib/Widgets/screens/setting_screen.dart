@@ -1,5 +1,7 @@
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
+import 'package:lazada_clone/Widgets/screens/account_info_screen.dart';
+import 'package:lazada_clone/Widgets/screens/address_screen.dart';
 import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/firebase_utility.dart';
 
@@ -16,7 +18,7 @@ class SettingScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         titleSpacing: 0,
         titleTextStyle: const TextStyle(
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w500,
           color: Colors.black,
           fontSize: 23,
         ),
@@ -51,11 +53,15 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Account Info',
                   style: TextStyle(fontSize: 19),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AccountInfoScreen()));
+                },
               ),
             ),
             Container(
@@ -69,11 +75,15 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Address',
                   style: TextStyle(fontSize: 19),
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const AddressScreen()));
+                },
               ),
             ),
             Container(
@@ -87,6 +97,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 subtitle: Text(
                   'Send me nofications about special offer',
                   style: TextStyle(
@@ -111,6 +122,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 leading: CountryFlag.fromCountryCode(
                   'VN',
                   height: 25,
@@ -140,6 +152,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 subtitle: Text(
                   'Vietnamese',
                   style: TextStyle(
@@ -164,6 +177,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Sercurity',
                   style: TextStyle(fontSize: 19),
@@ -182,6 +196,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Policy',
                   style: TextStyle(fontSize: 19),
@@ -200,6 +215,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Help',
                   style: TextStyle(fontSize: 19),
@@ -218,6 +234,7 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
               child: ListTile(
+                dense: true,
                 title: const Text(
                   'Contact Us',
                   style: TextStyle(fontSize: 19),
@@ -240,6 +257,7 @@ class SettingScreen extends StatelessWidget {
                   ),
                 ),
                 child: ListTile(
+                  dense: true,
                   titleAlignment: ListTileTitleAlignment.center,
                   title: const Center(
                     child: Text(

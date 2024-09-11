@@ -52,7 +52,11 @@ class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
             ? const Color.fromARGB(255, 28, 28, 28)
             : MyColors.white,
         border: Border(
-          top: BorderSide(color: Colors.grey.shade100, width: 2),
+          top: BorderSide(
+              color: navigationIndex == 1
+                  ? Colors.transparent
+                  : Colors.grey.shade100,
+              width: 2),
         ),
       ),
       child: Padding(
