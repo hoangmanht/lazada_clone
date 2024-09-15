@@ -1,4 +1,3 @@
-import 'package:country_flags/country_flags.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lazada_clone/utility/colors.dart';
@@ -205,10 +204,11 @@ class _SignupBottomSheetState extends State<SignupBottomSheet> {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            CountryFlag.fromCountryCode(
-                              'VN',
+                            SizedBox(
                               width: 25,
                               height: 15,
+                              child:
+                                  Image.asset('lib/assets/icons/flags/vn.png'),
                             ),
                             const SizedBox(
                               width: 5,

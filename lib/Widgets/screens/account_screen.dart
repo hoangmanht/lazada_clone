@@ -1,4 +1,3 @@
-import 'package:country_flags/country_flags.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -472,7 +471,7 @@ class _AccountScreenState extends State<AccountScreen> {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => SettingScreen(),
+                                  builder: (context) => const SettingScreen(),
                                 ),
                               );
                             },

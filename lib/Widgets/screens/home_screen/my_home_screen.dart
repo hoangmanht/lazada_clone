@@ -543,7 +543,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                     width: 8,
                   ),
                   const Text(
-                    'Sign in to get masive discount for \nfirst order',
+                    'Sign in to get masive discount\nfor first order',
                     style: TextStyle(color: Colors.white),
                   ),
                   const SizedBox(

@@ -65,7 +65,7 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                             style: TextStyle(
                               color: MyColors.hotPink,
                               fontWeight: FontWeight.bold,
-                              fontSize: 20,
+                              fontSize: 17,
                             ),
                           ),
                           const SizedBox(
@@ -107,8 +107,10 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                             '${ItemProductList.itemproductList[index].ratingScore}'
                             '(${ItemProductList.itemproductList[index].ratingTotal})',
                             style: TextStyle(
-                                color: Colors.grey.shade600,
-                                fontWeight: FontWeight.w500),
+                              color: Colors.grey.shade600,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13,
+                            ),
                           ),
                           const SizedBox(
                             width: 5,

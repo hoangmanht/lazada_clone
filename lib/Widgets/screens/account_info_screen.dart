@@ -1,4 +1,3 @@
-import 'package:country_flags/country_flags.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +32,7 @@ class AccountInfoScreen extends StatelessWidget {
         title: const Text(
           'Account info',
         ),
-      ),
+      ), // app bar
 
       // list item
       body: Padding(
@@ -85,7 +84,7 @@ class AccountInfoScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-            ),
+            ), // name
 
             // lazadaId
             Container(
@@ -130,7 +129,7 @@ class AccountInfoScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-            ),
+            ), // lazadaId
 
             // change password
             Container(
@@ -161,7 +160,7 @@ class AccountInfoScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-            ),
+            ), // change password
 
             // use touch ID
             Container(
@@ -184,7 +183,7 @@ class AccountInfoScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 17),
                     ),
                     AdvancedSwitch(
-                      activeColor: const Color.fromARGB(255, 50, 92, 220),
+                      activeColor: MyColors.blue,
                       onChanged: (value) {},
                       height: 28,
                     ),
@@ -192,7 +191,7 @@ class AccountInfoScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-            ),
+            ), // use touch ID
 
             // quick login
             Container(
@@ -215,7 +214,7 @@ class AccountInfoScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 17),
                     ),
                     AdvancedSwitch(
-                      activeColor: const Color.fromARGB(255, 50, 92, 220),
+                      activeColor: MyColors.blue,
                       onChanged: (value) {},
                       height: 28,
                     ),
@@ -223,7 +222,7 @@ class AccountInfoScreen extends StatelessWidget {
                 ),
                 onTap: () {},
               ),
-            ),
+            ), // quick login
 
             // padding
             const SizedBox(

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lazada_clone/Widgets/models/navigation_item.dart';
 import 'package:lazada_clone/Widgets/my_custom_navigation_bar.dart';
 import 'package:lazada_clone/providers/navigation_notifier.dart';
@@ -19,6 +20,17 @@ void main() async {
 
   runApp(
     MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.promptTextTheme(),
+        useMaterial3: true,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: ZoomPageTransitionsBuilder(
+              allowEnterRouteSnapshotting: false,
+            ),
+          },
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: ProviderScope(child: MyApp()),
     ),

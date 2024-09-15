@@ -93,6 +93,7 @@ class _MyCustomNavigationBarState extends ConsumerState<MyCustomNavigationBar> {
                         color: homeTab ? MyColors.hotPink : MyColors.icon,
                         fontWeight:
                             homeTab ? FontWeight.bold : FontWeight.normal,
+                        fontSize: 13,
                       ),
                     ),
                   ],
