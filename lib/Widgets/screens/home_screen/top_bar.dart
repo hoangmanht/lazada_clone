@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lazada_clone/utility/colors.dart';
 
 class TopBar extends StatelessWidget {
@@ -26,10 +25,9 @@ class TopBar extends StatelessWidget {
         child: Row(
           children: [
             // qr icon
-            SvgPicture.asset(
-              'lib/assets/icons/qr_code.svg',
-              height: 23,
-              colorFilter: ColorFilter.mode(MyColors.icon, BlendMode.srcIn),
+            Image.network(
+              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fqr_code.png?alt=media&token=b1e4c423-3fe8-490e-9ba0-f8191770f0cd',
+              height: 20,
             ),
 
             // padding
@@ -67,24 +65,31 @@ class TopBar extends StatelessWidget {
                       children: [
                         // text pop mart
                         Expanded(
-                          child: Container(
-                            padding: const EdgeInsets.only(left: 5),
-                            child: Text(
-                              'popmart official',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: MyColors.icon,
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {},
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                width: double.infinity,
+                                height: double.infinity,
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text(
+                                  'popmart official',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: MyColors.icon,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
 
                         // camera icon
-                        SvgPicture.asset(
-                          'lib/assets/icons/front-camera.svg',
-                          height: 23,
-                          colorFilter:
-                              ColorFilter.mode(MyColors.icon, BlendMode.srcIn),
+                        Image.network(
+                          'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fcamera.png?alt=media&token=60e970e5-1566-40a4-82c6-d0d20ca392c0',
+                          height: 20,
                         ),
 
                         // padding
@@ -121,10 +126,9 @@ class TopBar extends StatelessWidget {
             ),
 
             // wallet icon
-            SvgPicture.asset(
-              'lib/assets/icons/wallet.svg',
-              height: 25,
-              colorFilter: ColorFilter.mode(MyColors.icon, BlendMode.srcIn),
+            Image.network(
+              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fwallet.png?alt=media&token=55a0a375-980f-48cc-a7aa-23a8f2653334',
+              height: 20,
             ),
           ],
         ),

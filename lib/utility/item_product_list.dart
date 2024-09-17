@@ -6,7 +6,8 @@ import 'dart:math';
 class ItemProductList {
   static List<ItemProduct> itemproductList = [
     ItemProduct(
-      imageUrl: 'lib/assets/product_items/iphone.png',
+      imageUrl:
+          'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/product_items%2Fiphone.png?alt=media&token=f7845e4b-3556-4e4f-beea-6aef67a191ba',
       discountPrice: 29.000,
       percentageDiscount: '42%',
       title:
@@ -64,7 +65,8 @@ class ItemProductList {
       benefit: 'you save 300 đ',
     ),
     ItemProduct(
-      imageUrl: 'lib/assets/product_items/robot.png',
+      imageUrl:
+          'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/product_items%2Frobot.png?alt=media&token=6e7eae7f-905f-44d7-834b-e1b7655ff850',
       discountPrice: 66.000,
       percentageDiscount: '51%',
       title: "Smart robot vacuum cleaner",
@@ -118,7 +120,8 @@ class ItemProductList {
       benefit: 'you save 300 đ',
     ),
     ItemProduct(
-      imageUrl: 'lib/assets/product_items/bag.png',
+      imageUrl:
+          'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/product_items%2Fbag.png?alt=media&token=f06d108d-3258-408c-ba84-869080cbc7b7',
       discountPrice: 45.000,
       percentageDiscount: '60%',
       title: "Fashion Croosbody bag with multiple compartments",
@@ -176,7 +179,8 @@ class ItemProductList {
       benefit: 'you save 300 đ',
     ),
     ItemProduct(
-      imageUrl: 'lib/assets/product_items/kettle.png',
+      imageUrl:
+          'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/product_items%2Fkettle.png?alt=media&token=35ea92cc-9660-4c9c-97bf-47edf59d2df3',
       discountPrice: 69.000,
       percentageDiscount: '30%',
       title: "Premium glass kettle",

@@ -36,7 +36,7 @@ class _ItemProductScreenState extends State<ItemProductScreen> {
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(9),
                         topRight: Radius.circular(9)),
-                    child: Image.asset(
+                    child: Image.network(
                       ItemProductList.itemproductList[index].imageUrl,
                       fit: BoxFit.fill,
                     ),

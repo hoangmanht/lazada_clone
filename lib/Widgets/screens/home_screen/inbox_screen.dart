@@ -305,8 +305,8 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                       ),
                       SizedBox(
                         width: 22,
-                        child: Image.asset(
-                            'lib/assets/icons/account_screen_icons/brush.png'),
+                        child: Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Fbrush.png?alt=media&token=25c6430d-5401-4faf-a4e5-c6ac4ea48887'),
                       ),
                     ],
                   ),
@@ -323,8 +323,8 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                             SizedBox(
                               width: 178,
                               height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/orders.png',
+                              child: Image.network(
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Forders.png?alt=media&token=f3f82956-9ca6-4b1a-9497-97e056b6a6d0',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -332,7 +332,7 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                               width: 178,
                               height: 60,
                               child: Image.asset(
-                                'lib/assets/icons/chat.png',
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Fchat.png?alt=media&token=8381fcae-a473-4920-b13e-63a3daa10c92',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -352,8 +352,8 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                             SizedBox(
                               width: 178,
                               height: 60,
-                              child: Image.asset(
-                                'lib/assets/icons/noti.png',
+                              child: Image.network(
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Fnoti.png?alt=media&token=dbdd7429-667a-434d-a141-8979b962691f',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -361,7 +361,7 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                               width: 178,
                               height: 60,
                               child: Image.asset(
-                                'lib/assets/icons/promotion.png',
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Fpromotion.png?alt=media&token=f6509fb5-55ed-43fd-92b5-18a233765b0a',
                                 fit: BoxFit.fill,
                               ),
                             ),
@@ -384,8 +384,8 @@ class _InboxScreenState extends ConsumerState<InboxScreen> {
                           Container(
                             padding: const EdgeInsets.only(right: 25),
                             height: 190,
-                            child: Image.asset(
-                              'lib/assets/icons/character.png',
+                            child: Image.network(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/inbox_screen%2Fcharacter.png?alt=media&token=4b2570c7-da04-4327-8a87-4e4e5d545fe3',
                             ),
                           ),
                           const SizedBox(

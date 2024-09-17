@@ -4,7 +4,9 @@ import 'package:lazada_clone/Widgets/screens/account_sercurity.dart';
 import 'package:lazada_clone/Widgets/screens/address_screen.dart';
 import 'package:lazada_clone/Widgets/screens/change_country_screen.dart';
 import 'package:lazada_clone/Widgets/screens/chose_language_dialog.dart';
+import 'package:lazada_clone/Widgets/screens/contact_us_screen.dart';
 import 'package:lazada_clone/Widgets/screens/message_screen.dart';
+import 'package:lazada_clone/Widgets/screens/policy_screen.dart';
 import 'package:lazada_clone/utility/colors.dart';
 import 'package:lazada_clone/utility/firebase_utility.dart';
 
@@ -315,16 +317,32 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                 ),
               ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.only(
-                  left: 25,
+              child: Material(
+                color: MyColors.white,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.only(
+                    left: 25,
+                  ),
+                  dense: true,
+                  title: const Text(
+                    'Policies',
+                    style: TextStyle(fontSize: 19),
+                  ),
+                  onTap: () {
+                    Future.delayed(
+                      const Duration(
+                        milliseconds: 180,
+                      ),
+                      () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => PolicyScreen(),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-                dense: true,
-                title: const Text(
-                  'Policies',
-                  style: TextStyle(fontSize: 19),
-                ),
-                onTap: () {},
               ),
             ), //Policy
 
@@ -363,16 +381,32 @@ class _SettingScreenState extends State<SettingScreen> {
                   ),
                 ),
               ),
-              child: ListTile(
-                contentPadding: const EdgeInsets.only(
-                  left: 25,
+              child: Material(
+                color: MyColors.white,
+                child: ListTile(
+                  contentPadding: const EdgeInsets.only(
+                    left: 25,
+                  ),
+                  dense: true,
+                  title: const Text(
+                    'Contact Us',
+                    style: TextStyle(fontSize: 19),
+                  ),
+                  onTap: () {
+                    Future.delayed(
+                      const Duration(
+                        milliseconds: 180,
+                      ),
+                      () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ContactUsScreen(),
+                          ),
+                        );
+                      },
+                    );
+                  },
                 ),
-                dense: true,
-                title: const Text(
-                  'Contact Us',
-                  style: TextStyle(fontSize: 19),
-                ),
-                onTap: () {},
               ),
             ), //Contact Us
 
@@ -408,8 +442,15 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                   ),
                   onTap: () {
-                    FirebaseUtility().logoutUser();
-                    Navigator.of(context).pop();
+                    Future.delayed(
+                      const Duration(
+                        milliseconds: 180,
+                      ),
+                      () {
+                        FirebaseUtility().logoutUser();
+                        Navigator.of(context).pop();
+                      },
+                    );
                   },
                 ),
               ),

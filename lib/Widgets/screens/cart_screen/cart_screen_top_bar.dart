@@ -32,31 +32,33 @@ class CartScreenTopBar extends StatelessWidget {
               ),
             ),
             Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
-                  borderRadius: BorderRadius.circular(5),
-                ),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      height: 16,
-                      child: Image.asset('lib/assets/icons/return.png'),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 16,
+                    child: Image.network(
+                        'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/cart_screen%2Freturn.png?alt=media&token=9eaa1ee2-1121-4c7e-b964-1757fe2b71c1'),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  const Text(
+                    'Return for free(up to 30 day...',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Color.fromARGB(255, 76, 79, 95),
                     ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      'Return for free(up to 30 day...',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Color.fromARGB(255, 76, 79, 95),
-                      ),
-                    ),
-                  ],
-                )),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

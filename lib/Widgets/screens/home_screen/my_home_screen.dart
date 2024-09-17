@@ -101,14 +101,23 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                     return Builder(
                                         builder: (BuildContext context) {
                                       return Container(
+                                        color: Colors.grey.shade200,
                                         width: double.infinity,
                                         margin: const EdgeInsets.all(10),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(12),
-                                          child: Image.asset(
+                                          child: Image.network(
                                             url,
                                             fit: BoxFit.fill,
+                                            loadingBuilder: (context, child,
+                                                loadingProgress) {
+                                              if (loadingProgress == null) {
+                                                return child;
+                                              } else {
+                                                return const SizedBox();
+                                              }
+                                            },
                                           ),
                                         ),
                                       );
@@ -170,9 +179,9 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                                 overflow: TextOverflow.ellipsis,
                                                 style: const TextStyle(
                                                     height: 1.2,
-                                                    fontSize: 12,
+                                                    fontSize: 11,
                                                     fontWeight:
-                                                        FontWeight.w500),
+                                                        FontWeight.w600),
                                               ),
                                             ),
                                           ],
@@ -207,11 +216,19 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ),
 
                       // ads banner
-                      SizedBox(
-                        child: Image.asset(
-                          'lib/assets/images/ads.png',
-                          fit: BoxFit.scaleDown,
-                        ),
+                      Container(
+                        color: Colors.grey.shade200,
+                        height: 200,
+                        child: Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fads.png?alt=media&token=b64e15d8-fa1a-49da-9da8-c31edda5e880',
+                            fit: BoxFit.scaleDown,
+                            loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return const SizedBox();
+                          }
+                        }),
                       ),
 
                       // For new user
@@ -259,7 +276,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                       Container(
                                         margin: const EdgeInsets.only(right: 7),
                                         width: 117,
-                                        child: Image.asset(
+                                        child: Image.network(
                                           item.imageUrl,
                                           fit: BoxFit.scaleDown,
                                         ),
@@ -283,8 +300,8 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                 ),
                                 SizedBox(
                                   width: 117,
-                                  child: Image.asset(
-                                    'lib/assets/images/item_displays/new_voucher.png',
+                                  child: Image.network(
+                                    'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fnew_voucher.png?alt=media&token=5e40e3e3-c6f4-4de5-9bf9-270b708c29d3',
                                     fit: BoxFit.fitWidth,
                                   ),
                                 ),
@@ -331,8 +348,8 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                 ),
                                 SizedBox(
                                   width: 55,
-                                  child: Image.asset(
-                                      'lib/assets/images/item_displays/choice.png'),
+                                  child: Image.network(
+                                      'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/home_icons%2Fchoice.png?alt=media&token=587dfc93-4aad-4f18-8b9d-f7c49d3d5fdf'),
                                 ),
                                 const Spacer(),
                                 const Row(
@@ -364,7 +381,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                                       Container(
                                         margin: const EdgeInsets.only(right: 7),
                                         width: 115,
-                                        child: Image.asset(
+                                        child: Image.network(
                                           item.imageUrl,
                                           fit: BoxFit.scaleDown,
                                         ),
@@ -393,7 +410,8 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                       ),
                     ],
                   ),
-                ),
+                ), // only 3K
+
                 PinnedHeaderSliver(
                   child: Container(
                     color: Colors.grey.shade100,
@@ -444,6 +462,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
               controller: _tabController,
               physics: const NeverScrollableScrollPhysics(),
               children: [
+                // for you
                 Container(
                   padding: const EdgeInsets.only(top: 13),
                   decoration: BoxDecoration(
@@ -458,7 +477,9 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                     ),
                   ),
                   child: const ItemProductScreen(),
-                ),
+                ), // for you
+
+                // don't miss
                 Container(
                   padding: const EdgeInsets.only(top: 13),
                   decoration: BoxDecoration(
@@ -473,7 +494,9 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                     ),
                   ),
                   child: const ItemProductScreen(),
-                ),
+                ), // don't miss
+
+                // xu
                 Container(
                   padding: const EdgeInsets.only(top: 13),
                   decoration: BoxDecoration(
@@ -488,7 +511,9 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                     ),
                   ),
                   child: const ItemProductScreen(),
-                ),
+                ), // xu
+
+                // new items
                 Container(
                   padding: const EdgeInsets.only(top: 13),
                   decoration: BoxDecoration(
@@ -503,7 +528,7 @@ class _MyHomeScreenState extends State<MyHomeScreen>
                     ),
                   ),
                   child: const ItemProductScreen(),
-                ),
+                ), // new items
               ],
             ),
           ),

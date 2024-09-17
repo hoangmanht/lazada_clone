@@ -305,8 +305,8 @@ class _CartScreenState extends ConsumerState<CartScreen> {
                       children: [
                         SizedBox(
                           height: 85,
-                          child: Image.asset(
-                              'lib/assets/icons/cart_character.png'),
+                          child: Image.network(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/cart_screen%2Fcart_character.png?alt=media&token=fecbfcc1-9a04-41a0-ac7e-e244cff531bd'),
                         ),
                         const SizedBox(
                           height: 5,

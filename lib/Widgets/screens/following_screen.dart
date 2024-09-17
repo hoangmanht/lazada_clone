@@ -297,8 +297,8 @@ class _FollowingScreenState extends ConsumerState<FollowingScreen> {
                       children: [
                         SizedBox(
                           height: 170,
-                          child: Image.asset(
-                              'lib/assets/icons/like_character.png'),
+                          child: Image.network(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/like_screen%2Flike_character.png?alt=media&token=870cc225-e57d-402f-8577-67071d1999d8'),
                         ),
                         const SizedBox(
                           height: 15,

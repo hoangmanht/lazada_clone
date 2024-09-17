@@ -13,12 +13,13 @@ class _ForYouScreenState extends State<ForYouScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        // video
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           color: const Color.fromARGB(255, 28, 28, 28),
           child: const VideoPlayer(),
-        ),
+        ), //video
 
         //menu item
         Positioned(
@@ -39,7 +40,8 @@ class _ForYouScreenState extends State<ForYouScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
-              ),
+              ), // like icon
+
               const SizedBox(
                 height: 18,
               ),
@@ -58,7 +60,8 @@ class _ForYouScreenState extends State<ForYouScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
-              ),
+              ), // comment icon
+
               const SizedBox(
                 height: 18,
               ),
@@ -77,7 +80,8 @@ class _ForYouScreenState extends State<ForYouScreen> {
                     style: TextStyle(color: Colors.white, fontSize: 16),
                   ),
                 ],
-              ),
+              ), //share icon
+
               const SizedBox(
                 height: 18,
               ),
@@ -97,7 +101,7 @@ class _ForYouScreenState extends State<ForYouScreen> {
 
                   const SizedBox(
                     height: 18,
-                  ),
+                  ), // find icon
 
                   //more
                   SizedBox(

@@ -407,12 +407,15 @@ class _AccountScreenState extends State<AccountScreen> {
                                   color: MyColors.white,
                                   size: 24,
                                 ),
-                              ),
+                              ), // avatar
                             ],
                           ),
+
                           const SizedBox(
                             width: 15,
                           ),
+
+                          // user's info
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -466,18 +469,22 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ),
                               ),
                             ],
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const SettingScreen(),
-                                ),
-                              );
-                            },
-                            child: const Icon(
-                              Icons.hexagon_outlined,
-                              size: 25,
+                          ), // user's info
+
+                          Material(
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => const SettingScreen(),
+                                  ),
+                                );
+                              },
+                              child: SizedBox(
+                                width: 20,
+                                child:
+                                    Image.asset('lib/assets/icons/setting.png'),
+                              ),
                             ),
                           ),
                         ],
@@ -490,7 +497,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       padding: const EdgeInsets.only(top: 20),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('lib/assets/images/login_bg.png'),
+                          image: NetworkImage(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Flogin_bg.png?alt=media&token=91461de4-cbfe-4193-b3e8-484a0c1301b5'),
                         ),
                       ),
                       child: Stack(
@@ -596,12 +604,13 @@ class _AccountScreenState extends State<AccountScreen> {
                   }
                 },
               ),
-              // title
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 13),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // title
                     Text(
                       'My orders',
                       style: TextStyle(
@@ -609,7 +618,9 @@ class _AccountScreenState extends State<AccountScreen> {
                         fontSize: 17,
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
+                    ), // title
+
+                    // view all order
                     Row(
                       children: [
                         Text(
@@ -625,7 +636,7 @@ class _AccountScreenState extends State<AccountScreen> {
                           size: 12,
                         ),
                       ],
-                    ),
+                    ), // view all order
                   ],
                 ),
               ),
@@ -644,8 +655,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         SizedBox(
                           width: 30,
-                          child: Image.asset(
-                              'lib/assets/icons/account_screen_icons/pending_payment.png'),
+                          child: Image.network(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Fpending_payment.png?alt=media&token=84d69cf2-ef90-4e0e-a306-f887535fc9c7'),
                         ),
                         const SizedBox(
                           height: 5,
@@ -663,8 +674,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         SizedBox(
                           width: 30,
-                          child: Image.asset(
-                              'lib/assets/icons/account_screen_icons/Awaiting_shipment.png'),
+                          child: Image.network(
+                              'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2FAwaiting_shipment.png?alt=media&token=11d99d0a-1201-4fab-9891-0f25f7d40657'),
                         ),
                         const SizedBox(
                           height: 5,
@@ -682,8 +693,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         SizedBox(
                           width: 30,
-                          child: Image.asset(
-                              "lib/assets/icons/account_screen_icons/on_it's way.png"),
+                          child: Image.network(
+                              "https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2FAwaiting_shipment.png?alt=media&token=11d99d0a-1201-4fab-9891-0f25f7d40657"),
                         ),
                         const SizedBox(
                           height: 5,
@@ -702,8 +713,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         SizedBox(
                           width: 30,
-                          child: Image.asset(
-                              "lib/assets/icons/account_screen_icons/pending_review.png"),
+                          child: Image.network(
+                              "https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Fpending_review.png?alt=media&token=48ac4675-bbac-4078-889f-88cdea904cf0"),
                         ),
                         const SizedBox(
                           height: 5,
@@ -722,8 +733,8 @@ class _AccountScreenState extends State<AccountScreen> {
                       children: [
                         SizedBox(
                           width: 30,
-                          child: Image.asset(
-                              "lib/assets/icons/account_screen_icons/return_cancel.png"),
+                          child: Image.network(
+                              "https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Freturn_cancel.png?alt=media&token=85672c4a-4034-4e20-8449-f9fe9e92fecd"),
                         ),
                         const SizedBox(
                           height: 5,
@@ -748,8 +759,8 @@ class _AccountScreenState extends State<AccountScreen> {
                 color: Colors.grey.shade100,
                 padding: const EdgeInsets.all(12),
                 child: SizedBox(
-                  child: Image.asset(
-                      'lib/assets/icons/account_screen_icons/pro_banner.png'),
+                  child: Image.network(
+                      'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Fpro_banner.png?alt=media&token=32f25735-c0b7-4815-873a-7f7b72cda950'),
                 ),
               ),
 
@@ -805,8 +816,8 @@ class _AccountScreenState extends State<AccountScreen> {
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage(
-                                'lib/assets/icons/account_screen_icons/xu.png',
+                              image: NetworkImage(
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Fxu.png?alt=media&token=51b17249-406b-48bd-b082-8acabf80e8ef',
                               ),
                             ),
                           ),
@@ -848,8 +859,8 @@ class _AccountScreenState extends State<AccountScreen> {
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               fit: BoxFit.fill,
-                              image: AssetImage(
-                                'lib/assets/icons/account_screen_icons/plaint tree.png',
+                              image: NetworkImage(
+                                'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/account_icons%2Fplaint%20tree.png?alt=media&token=f7ce5535-a27d-4f6d-8baa-9210fe7c89e6',
                               ),
                             ),
                           ),

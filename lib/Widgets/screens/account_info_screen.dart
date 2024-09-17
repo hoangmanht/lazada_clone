@@ -70,7 +70,7 @@ class AccountInfoScreen extends StatelessWidget {
                             color: Colors.grey.shade500,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Icon(

@@ -11,8 +11,8 @@ class VideoPlayer extends StatefulWidget {
 
 class _VideoPlayerState extends State<VideoPlayer> {
   final List<String> videoUrls = [
-    'lib/assets/videos/1.mp4',
-    'lib/assets/videos/2.mp4',
+    'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/videos%2F1.mp4?alt=media&token=38d30407-895a-4b90-9b56-1a22aa698227',
+    'https://firebasestorage.googleapis.com/v0/b/lazada-clone-f3640.appspot.com/o/videos%2F2.mp4?alt=media&token=4e0053ed-6fd7-4bf3-a616-e712383fa74f',
     // Add more video URLs here
   ];
   @override

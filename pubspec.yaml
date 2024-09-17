@@ -33,12 +33,14 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_auth: ^5.2.0
   firebase_core: ^3.4.0
+  firebase_storage: ^12.3.0
   flutter:
     sdk: flutter
   flutter_advanced_switch: ^3.1.0
   flutter_native_splash: ^2.4.1
   flutter_riverpod: ^2.5.1
   flutter_svg: ^2.0.10+1
+  flutter_touch_ripple: ^1.1.21
   google_fonts: ^6.2.1
   google_sign_in: ^6.2.1
   sticky_headers: ^0.3.0+2
@@ -68,32 +70,14 @@ flutter:
 
     - lib/assets/icons/like_screen/
 
-    # banners
-    - lib/assets/banners/
-
-    # icon
-    - lib/assets/images/
-
-    # item display
-    - lib/assets/images/item_displays/
+    - lib/assets/feedback/
 
     # icons tab bar
     - lib/assets/icons_tab_bar/
 
-    # product items
-    - lib/assets/product_items/
-
     # comment
     - lib/assets/comments/
 
-    # avatars
-    - lib/assets/avatars/
-
-    # account screen item
-    - lib/assets/icons/account_screen_icons/
-
-    # video
-    - lib/assets/videos/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
@@ -103,11 +87,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-    - family: Soin-Sans
-      fonts:
-        - asset: lib/assets/fonts/Soin-Sans-Neue-Font.otf
-          style: italic
+  # fonts:
+  #   - family: Soin-Sans
+  #     fonts:
+  #       - asset: lib/assets/fonts/Soin-Sans-Neue-Font.otf
+  #         style: italic
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

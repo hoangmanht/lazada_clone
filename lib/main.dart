@@ -21,7 +21,7 @@ void main() async {
   runApp(
     MaterialApp(
       theme: ThemeData(
-        textTheme: GoogleFonts.promptTextTheme(),
+        textTheme: GoogleFonts.openSansTextTheme(),
         useMaterial3: true,
         pageTransitionsTheme: const PageTransitionsTheme(
           builders: <TargetPlatform, PageTransitionsBuilder>{
@@ -43,24 +43,22 @@ class MyApp extends ConsumerWidget {
   // NavigationBar's items
   List<MyNavigationItem> items = [
     MyNavigationItem(
-      iconPath: 'lib/assets/icons/like.svg',
+      iconPath: 'lib/assets/icons/like',
       label: 'Like',
       itemIndex: 1,
     ),
     MyNavigationItem(
-      iconPath: 'lib/assets/icons/inbox.svg',
+      iconPath: 'lib/assets/icons/inbox',
       label: 'Inbox',
       itemIndex: 2,
     ),
     MyNavigationItem(
-      iconPath: 'lib/assets/icons/cart.svg',
+      iconPath: 'lib/assets/icons/cart',
       label: 'Cart',
       itemIndex: 3,
     ),
     MyNavigationItem(
-        iconPath: 'lib/assets/icons/account.svg',
-        label: 'Account',
-        itemIndex: 4),
+        iconPath: 'lib/assets/icons/account', label: 'Account', itemIndex: 4),
   ];
 
   @override
